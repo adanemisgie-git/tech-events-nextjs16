@@ -129,7 +129,7 @@ eventSchema.pre('save', function () {
   }
 
 
-  
+
   // Normalize time to HH:MM format (24-hour)
   if (this.isModified('time')) {
     const timeRegex = /^([0-1]?[0-9]|2[0-3]):[0-5][0-9]$/;
@@ -150,3 +150,6 @@ const Event: Model<IEvent> =
   mongoose.models.Event || mongoose.model<IEvent>('Event', eventSchema);
 
 export default Event;
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
