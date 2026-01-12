@@ -128,6 +128,8 @@ eventSchema.pre('save', function () {
     this.date = parsedDate.toISOString().split('T')[0];
   }
 
+
+  
   // Normalize time to HH:MM format (24-hour)
   if (this.isModified('time')) {
     const timeRegex = /^([0-1]?[0-9]|2[0-3]):[0-5][0-9]$/;
@@ -135,7 +137,6 @@ eventSchema.pre('save', function () {
       throw new Error('Time must be in HH:MM format (24-hour)');
     }
   }
-
   // Validate non-empty arrays
   if (this.agenda.length === 0) {
     throw new Error('Agenda cannot be empty');
@@ -144,7 +145,6 @@ eventSchema.pre('save', function () {
     throw new Error('Tags cannot be empty');
   }
 });
-
 // Prevent model recompilation in Next.js development hot-reload
 const Event: Model<IEvent> =
   mongoose.models.Event || mongoose.model<IEvent>('Event', eventSchema);
